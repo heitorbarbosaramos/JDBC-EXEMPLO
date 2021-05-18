@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class BD {
 
-    public static void conexao(){
+    public static Connection conexao(){
 
         final Logger LOG = Logger.getLogger("BD.class");
 
@@ -24,8 +24,12 @@ public class BD {
         //try resource ao finalizar faz o fechamento da conexao
         try (Connection conn = DriverManager.getConnection(url, usuario, senha)){
             LOG.info("CONECTADO AO BANCO");
+            return  conn;
         } catch (SQLException throwables) {
             LOG.info("NAO FOI CONECTADO AO BANCO : " + throwables.getMessage());
         }
+
+        return  null;
+
     }
 }
