@@ -17,6 +17,7 @@ public class BD {
         final Logger LOG = Logger.getLogger("BD.class");
 
         Connection conn = null;
+
         try{
 
             InputStream input = BD.class.getClassLoader().getResourceAsStream("connections.properties");
@@ -25,7 +26,7 @@ public class BD {
 
             String driver = props.getProperty("jdbc.driver");
             String local = props.getProperty("db.local");
-            String nomeBanco = props.getProperty("db.local");
+            String nomeBanco = props.getProperty("db.banco");
             String usuario = props.getProperty("db.usuario");
             String senha = props.getProperty("db.senha");
 
