@@ -2,7 +2,7 @@ configuracao/BD.java
  configuracao.BD
 entidades/Aluno.java
  entidades.Aluno
-Principal.java
- Principal
 DAO/AlunoDAO.java
  DAO.AlunoDAO
+Principal.java
+ Principal

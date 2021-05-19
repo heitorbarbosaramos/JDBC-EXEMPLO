@@ -20,5 +20,7 @@ public class Principal {
 
         Aluno insert = new Aluno(null, "Debora Fonseca Lima", 23, "SP");
         alunoDAO.insert(insert);
+
+        alunoDAO.delete(1);
     }
 }

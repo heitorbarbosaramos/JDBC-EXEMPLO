@@ -82,4 +82,25 @@ public class AlunoDAO {
             LOG.info("ERROR AO INSERIR NOVO ALUNO");
         }
     }
+
+    public void delete(Integer id){
+
+        Connection conn = BD.conexao();
+
+        try {
+
+            PreparedStatement statement = conn.prepareStatement("DELETE FROM aluno where id = ?");
+            statement.setInt(1, id);
+            Integer linhas = statement.executeUpdate();
+
+            if(linhas > 0){
+                LOG.info("ALUNO EXCLUIDO");
+            }else{
+                LOG.info("ALUNO NAO FOI EXCLUIDO TENTE NOVAMENTE");
+            }
+
+        }catch (SQLException e){
+            LOG.info("NAO POSSIVEL EXCLUIR O ALUNO DO ID: " + id);
+        }
+    }
 }
