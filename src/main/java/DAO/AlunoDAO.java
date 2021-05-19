@@ -35,4 +35,28 @@ public class AlunoDAO {
         }
         return alunos;
     }
+
+    public Aluno getById(Integer id){
+
+        Connection conn = BD.conexao();
+        Aluno aluno = new Aluno();
+        try {
+
+            PreparedStatement estatement =  conn.prepareStatement("SELECT * FROM aluno WHERE id = ?");
+            estatement.setInt(1, id);
+            ResultSet rs = estatement.executeQuery();
+
+            if(rs.next()){
+                aluno.setId(rs.getInt("id"));
+                aluno.setNome(rs.getString("nome"));
+                aluno.setIdade(rs.getInt("idade"));
+                aluno.setEstado(rs.getString("estado"));
+            }
+
+        } catch (SQLException e) {
+            LOG.info("ERRO AO RECUPERAR ALUNO POR ID  " + e.getMessage());
+        }
+
+        return aluno;
+    }
 }

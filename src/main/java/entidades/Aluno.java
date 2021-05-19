@@ -10,12 +10,18 @@ public class Aluno implements Serializable {
     private Integer idade;
     private String estado;
 
+    public Aluno() {
+
+    }
+
     public Aluno(Integer id, String nome, Integer idade, String estado) {
         this.id = id;
         this.nome = nome;
         this.idade = idade;
         this.estado = estado;
     }
+
+
 
     public Integer getId() {
         return id;

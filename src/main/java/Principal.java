@@ -14,5 +14,8 @@ public class Principal {
         List<Aluno> alunos = alunoDAO.todosAlunos();
 
         alunos.stream().forEach(System.out::println);
+
+        Aluno aluno = alunoDAO.getById(1);
+        System.out.println(aluno.toString());
     }
 }
