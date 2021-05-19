@@ -15,12 +15,18 @@ public class Principal {
 
         alunos.stream().forEach(System.out::println);
 
-        Aluno aluno = alunoDAO.getById(1);
+        Aluno aluno = alunoDAO.getById(4);
         System.out.println(aluno.toString());
 
         Aluno insert = new Aluno(null, "Debora Fonseca Lima", 23, "SP");
         alunoDAO.insert(insert);
 
         alunoDAO.delete(1);
+
+        aluno.setEstado("MG");
+        alunoDAO.atualizar(aluno);
+
+        aluno = alunoDAO.getById(4);
+        System.out.println(aluno.toString());
     }
 }

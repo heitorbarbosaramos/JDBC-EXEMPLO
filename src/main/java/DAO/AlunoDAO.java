@@ -79,7 +79,7 @@ public class AlunoDAO {
             }
 
         }catch (SQLException e){
-            LOG.info("ERROR AO INSERIR NOVO ALUNO");
+            LOG.info("ERROR AO INSERIR NOVO ALUNO: " + e.getMessage());
         }
     }
 
@@ -100,7 +100,32 @@ public class AlunoDAO {
             }
 
         }catch (SQLException e){
-            LOG.info("NAO POSSIVEL EXCLUIR O ALUNO DO ID: " + id);
+            LOG.info("NAO POSSIVEL EXCLUIR O ALUNO DO ID: " + id + " : " + e.getMessage());
+        }
+    }
+
+    public void atualizar(Aluno aluno){
+
+        Connection conn = BD.conexao();
+
+        try {
+
+
+            PreparedStatement statement = conn.prepareStatement("UPDATE aluno set nome=?, idade=?, estado=? WHERE id=?");
+            statement.setString(1, aluno.getNome());
+            statement.setInt(2, aluno.getIdade());
+            statement.setString(3, aluno.getEstado());
+            statement.setInt(4, aluno.getId());
+            Integer linhas = statement.executeUpdate();
+
+            if(linhas > 0){
+                LOG.info("ALUNO ATUALIZADO");
+            }else{
+                LOG.info("ERRO AO ATUALIZAR O ALUNO");
+            }
+
+        }catch (SQLException e){
+            LOG.info("ERROR AO ATUALIZAR O ALUNO: " + e.getMessage());
         }
     }
 }
