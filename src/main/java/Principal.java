@@ -17,5 +17,8 @@ public class Principal {
 
         Aluno aluno = alunoDAO.getById(1);
         System.out.println(aluno.toString());
+
+        Aluno insert = new Aluno(null, "Debora Fonseca Lima", 23, "SP");
+        alunoDAO.insert(insert);
     }
 }

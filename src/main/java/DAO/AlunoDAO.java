@@ -59,4 +59,27 @@ public class AlunoDAO {
 
         return aluno;
     }
+
+    public void insert(Aluno aluno){
+
+        Connection conn = BD.conexao();
+
+        try {
+
+            PreparedStatement estatement = conn.prepareStatement("INSERT INTO  aluno (nome, idade, estado) values (?, ? ,?)");
+            estatement.setString(1, aluno.getNome());
+            estatement.setInt(2,aluno.getIdade());
+            estatement.setString(3, aluno.getEstado());
+            Integer linhasAfetadas = estatement.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                LOG.info("ALUNO INSERIDO COM SUCESSO!");
+            } else {
+                LOG.info("ERRO AO INSERIR NOVO ALUNO");
+            }
+
+        }catch (SQLException e){
+            LOG.info("ERROR AO INSERIR NOVO ALUNO");
+        }
+    }
 }
